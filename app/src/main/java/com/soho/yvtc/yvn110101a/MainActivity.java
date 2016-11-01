@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("對話框測試");
-        builder.setMessage("這是對話框內容");
+        builder.setMessage("這是對話框內容\n這是第二行");
 
         builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
@@ -31,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(MainActivity.this, "取消被按下", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "HA HA HA", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNeutralButton("忽略", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this,"忽略被按下", Toast.LENGTH_LONG).show();
             }
         });
         builder.show();
