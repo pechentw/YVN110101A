@@ -11,13 +11,67 @@
     tools:context="com.soho.yvtc.yvn110101a.MainActivity">
 
     <Button
+        android:text="Dialog button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:onClick="click1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="輸入型Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_alignParentStart="true"
+        android:id="@+id/button2"
+        android:onClick="click2" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toEndOf="@+id/button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <Button
         android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="34dp"
-        android:id="@+id/button"
-        android:onClick="click1" />
+        android:layout_below="@+id/button2"
+        android:layout_alignEnd="@+id/button2"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/button3"
+        android:onClick="click3" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignStart="@+id/textView" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_below="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:onClick="click4" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_alignStart="@+id/textView2"
+        android:id="@+id/textView3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
 </RelativeLayout>
