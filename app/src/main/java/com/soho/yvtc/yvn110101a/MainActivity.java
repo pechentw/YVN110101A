@@ -1,22 +1,21 @@
 package com.soho.yvtc.yvn110101a;
 
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
     int tmp = -1, ch = -1;
+    boolean b[] = new boolean[5];
+    boolean chks[] = new boolean[5];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
     public void click5(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("選項對話框測試");
-        builder.setMultiChoiceItems(R.array.drinks, new boolean[5], new DialogInterface.OnMultiChoiceClickListener() {
+        b = chks.clone();
+        builder.setMultiChoiceItems(R.array.drinks, b, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
 
@@ -126,15 +126,62 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                StringBuilder sb = new StringBuilder();
+                chks = b.clone();
+                for (int i=0;i<=3;i++)
+                {
+                    if (b[i])
+                    {
+                        sb.append(String.valueOf(i + ","));
+                    }
+                }
+                TextView tv4 = (TextView) findViewById(R.id.textView4);
+                tv4.setText(sb.toString());
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                b = chks.clone();
+            }
+        });
+        builder.show();
+    }
+
+    public void click6(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("輸入對話框測試");
+        builder.setMessage("請輸入你的暱稱");
+
+        LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+        View myv = inflater.inflate(R.layout.myview, null);
+
+        final TextView tt = (TextView) myv.findViewById(R.id.textView6);
+        Button bb = (Button) myv.findViewById(R.id.button7);
+        Button bb2 = (Button) myv.findViewById(R.id.button8);
+        bb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tt.setText("Click!! Click!!");
+            }
+        });
+        bb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tt.setText("Click2!! Click2!!");
+            }
+        });
+
+        builder.setView(myv);
+
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
             }
         });
+
         builder.show();
     }
 }
