@@ -19,5 +19,5 @@
         android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button8" />
+        android:id="@+id/button7_1" />
 </LinearLayout>
